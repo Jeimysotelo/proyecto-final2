@@ -3,19 +3,18 @@ const app = express();                      // Invocamos express
 
 /** Definimos las rutas disponibles */
 app.get( '/', function( request, response ) {
-    const homePage = `<h1>Home Page</h1>
-        <p>Esta es la pagina de inicio de la tienda virtual</p>
-    `;
-    response.send( homePage );
+    const data = {
+        message: 'Bienvenido a mi web'
+    };
+    response.json( data );
 });
-app.get( '/contactenos', function( request, response ) {
-    response.send( `<h1>Contact Page</h1>
-        <form>
-            <label>Nombre</label>
-            <input />
-            <button>send</button>
-        </form>` 
-    );
+app.get( '/api/users', function( request, response ) {
+    response.json([
+        {nombre:'Maria Alejandra', genero: 'Femenino'},
+        {nombre:'Nidia', genero: 'Femenino'},
+        {nombre:'Laura', genero: 'Femenino'},
+        {nombre:'Natalia', genero: 'Femenino'}
+    ]);
 } );
 
 
