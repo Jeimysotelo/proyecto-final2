@@ -4,7 +4,7 @@
   "description": "Tienda para vender productos",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node --watch ./src/index.js"
   },
   "keywords": [
     "node",
@@ -12,5 +12,8 @@
     "jwt"
   ],
   "author": "Juan Carlos Jiménez Gutiérrez",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
