@@ -2,20 +2,7 @@ const express = require( 'express' );       // Importamos express
 const app = express();                      // Invocamos express
 
 /** Definimos las rutas disponibles */
-app.get( '/', function( request, response ) {
-    const data = {
-        message: 'Bienvenido a mi web'
-    };
-    response.json( data );
-});
-app.get( '/api/users', function( request, response ) {
-    response.json([
-        {nombre:'Maria Alejandra', genero: 'Femenino'},
-        {nombre:'Nidia', genero: 'Femenino'},
-        {nombre:'Laura', genero: 'Femenino'},
-        {nombre:'Natalia', genero: 'Femenino'}
-    ]);
-} );
+app.use( '/api/products', require( './routes/product.routes' ) );   // -> http://localhost:3000/api/products
 
 
 /** Lanzamos el servidor web */
