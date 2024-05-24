@@ -3,6 +3,8 @@ const app = express();                      // Invocamos express
 
 const { dbConnection } = require( './config/mongo.config' );  // Importamos la configuracion de Mongoose para MongoDB
 
+app.use( express.json() );
+
 /** Definimos las rutas disponibles */
 app.use( '/api/products', require( './routes/product.routes' ) );   // -> http://localhost:3000/api/products
 
