@@ -3,12 +3,22 @@ const {insertarProducto} = require ('../services/product.service')
 async function crearProducto ( req, res ) {
     const producto = req.body;
     
-    const nuevoProducto = await insertarProducto(producto)
+    try {
+        const nuevoProducto = await insertarProducto(producto)
 
-    res.json({
-        ok:true,
-        data:nuevoProducto
-    })
+        res.json({
+            ok:true,
+            data:nuevoProducto
+        })    
+    } catch (error) {
+        console.error(error)
+        res.json({
+            ok:false,
+            msg:"No se pudo insertar producto"
+        }) 
+
+    }
+    
 }
 
 module.exports = {

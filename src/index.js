@@ -2,6 +2,7 @@ const express = require( 'express' );       // Importamos express
 const app = express();                      // Invocamos express
 
 const { dbConnection } = require( './config/mongo.config' );  // Importamos la configuracion de Mongoose para MongoDB
+const PORT = process.env.PORT
 
 app.use( express.json() );
 
@@ -13,6 +14,6 @@ app.use( '/api/products', require( './routes/product.routes' ) );   // -> http:/
 dbConnection();     
 
 /** Lanzamos el servidor web */
-app.listen( 3000, function() {
-    console.log( 'Servidor corriendo en el puerto 3000' );
+app.listen( PORT, function() {
+    console.log( `servidor corriendo en http://localhost:${PORT} ` );
 });

@@ -2,7 +2,7 @@ const mongoose = require( 'mongoose' );
 
 async function dbConnection() {
     try {
-        await mongoose.connect( 'mongodb://localhost:27017/shop', {} );
+        await mongoose.connect( process.env.DB_URL, {} );
         console.log( 'Base de datos inicializada exitosamente' );
     } 
     catch (error) {
