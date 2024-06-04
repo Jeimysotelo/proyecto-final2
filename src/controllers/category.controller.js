@@ -1,4 +1,4 @@
-const { getAllCategories, getOneCategoryById, createOneCategory, removeOneCategoryById } = require("../services/category.service");
+const { getAllCategories, getOneCategoryById, createOneCategory, removeOneCategoryById, updateOneCategoryById } = require("../services/category.service");
 
 const getCategories = async ( req, res ) => {
 
@@ -63,7 +63,25 @@ const createCategory = async ( req, res ) => {
     
 }
 
-const updateCategoryById = () => {}
+const updateCategoryById = async ( req, res ) => {
+    const id = req.params.id;
+    const updatedData = req.body;
+
+    try {
+        const data = await updateOneCategoryById( id, updatedData );
+        
+        res.json({
+            ok: true,
+            data
+        });
+    } catch (error) {
+        console.error( error );
+        res.json({
+            ok: false,
+            msg: 'No pudo actualizar la categoria por ID'
+        })
+    }
+}
 
 const removeCategoryById = async ( req, res ) => {
     const id = req.params.id;
