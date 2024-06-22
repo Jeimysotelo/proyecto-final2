@@ -1,9 +1,10 @@
 const express = require( 'express' );       // Importamos express
 const app = express();                      // Invocamos express
-
+const cors = require( 'cors' ); 
 const { dbConnection } = require( './config/mongo.config' );  // Importamos la configuracion de Mongoose para MongoDB
 const PORT = process.env.PORT
 
+app.use(cors())
 app.use( express.json() );
 
 /** Definimos las rutas disponibles */
