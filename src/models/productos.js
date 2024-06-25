@@ -10,6 +10,14 @@ const productosSchema = new Schema({
     },
     price: {
         type: Number,
+        default: 0
+    },
+    urlimagen: {
+        type:String,
+    },
+    quantity: {
+        type: Number,
+        default: 0 
     }
 },{
     timestamps: true
