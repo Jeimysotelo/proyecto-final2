@@ -1,4 +1,4 @@
-const { Schema, model } = require( 'mongoose' )
+const { Schema, model } = require( 'mongoose' );
 
 const EventoSchema = new Schema({
     name:{
@@ -11,7 +11,7 @@ const EventoSchema = new Schema({
     price :{
         type : Number,
         default: 0
-    },  
+    },
     finalDate:  {
          type: Date,
          default: Date.now
@@ -22,6 +22,6 @@ const EventoSchema = new Schema({
     },
 })
 
-const EventoModel = model( 'Eventos', EventoSchemaSchema );
+const EventoModel = model( 'Evento', EventoSchema );
 
 module.exports = EventoModel;

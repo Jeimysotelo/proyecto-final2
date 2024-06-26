@@ -1,9 +1,9 @@
-const { getAllCategories, getOneCategoryById, createOneCategory, removeOneCategoryById, updateOneCategoryById } = require("../services/category.service");
+const { insertarEvento, obtenerEventos, obtenerUnEventoPorId, eliminarUnEventoPorId, actualizarUnEventoCompleto } = require("../services/evento.service");
 
-const getCategories = async ( req, res ) => {
+const getEventos = async ( req, res ) => {
 
     try {
-        const data = await getAllCategories();    
+        const data = await obtenerEventos();    
 
         res.json({
             ok: true,
@@ -14,18 +14,18 @@ const getCategories = async ( req, res ) => {
         console.error( error );
         res.json({
             ok: false,
-            msg: 'Error no puede obtener todas las categorias'
+            msg: 'Error no puede obtener todos los eventos'
         })
     }
 
 
 }
 
-const getCategoryById = async ( req, res ) => {
+const getEventoById = async ( req, res ) => {
     const id = req.params.id;
 
     try {
-        const data = await getOneCategoryById( id );
+        const data = await obtenerUnEventoPorId( id );
 
         res.json({
             ok: true,
@@ -36,17 +36,17 @@ const getCategoryById = async ( req, res ) => {
         console.error( error );
         res.json({
             ok: false,
-            msg: 'Error al obtener una categoria por ID'
+            msg: 'Error al obtener un evento por ID'
         });
     }
 
 }
 
-const createCategory = async ( req, res ) => {
-    const newCategory = req.body;
+const createEvento = async ( req, res ) => {
+    const newEvento = req.body;
     
     try {
-        const data = await createOneCategory( newCategory );
+        const data = await insertarEvento( newEvento );
 
         res.json({
             ok: true,
@@ -56,19 +56,19 @@ const createCategory = async ( req, res ) => {
         console.error( error );
         res.json({
             ok: false,
-            msg: 'Error al crear una categoria'
+            msg: 'Error al crear un evento'
         });
     }
 
     
 }
 
-const updateCategoryById = async ( req, res ) => {
+const updateEventoById = async ( req, res ) => {
     const id = req.params.id;
     const updatedData = req.body;
 
     try {
-        const data = await updateOneCategoryById( id, updatedData );
+        const data = await actualizarUnEventoCompleto( id, updatedData );
         
         res.json({
             ok: true,
@@ -78,16 +78,16 @@ const updateCategoryById = async ( req, res ) => {
         console.error( error );
         res.json({
             ok: false,
-            msg: 'No pudo actualizar la categoria por ID'
+            msg: 'No pudo actualizar el evento por ID'
         })
     }
 }
 
-const removeCategoryById = async ( req, res ) => {
+const removeEventoById = async ( req, res ) => {
     const id = req.params.id;
 
     try {
-        const data = await removeOneCategoryById( id );
+        const data = await eliminarUnEventoPorId( id );
 
         res.json({
             ok: true,
@@ -97,16 +97,16 @@ const removeCategoryById = async ( req, res ) => {
         console.error( error );
         res.json({
             ok: false,
-            msg: 'Error al eliminar categoria por ID'
+            msg: 'Error al eliminar el evento por ID'
         });
     }
     
 }
 
 module.exports = {
-    getCategories,
-    getCategoryById,
-    createCategory,
-    updateCategoryById,
-    removeCategoryById
+    getEventos,
+    getEventoById,
+    createEvento,
+    updateEventoById,
+    removeEventoById
 };

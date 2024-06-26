@@ -11,7 +11,7 @@
     "express",
     "jwt"
   ],
-  "author": "Juan Carlos Jiménez Gutiérrez",
+  "author": "Jeimy sotelo",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
