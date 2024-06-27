@@ -6,6 +6,7 @@ const PORT = process.env.PORT
 
 app.use(cors())
 app.use( express.json() );
+app.use( cors() ); 
 
 /** Definimos las rutas disponibles */
 app.use( '/api/products', require( './routes/product.routes' ) );       // -> http://localhost:4000/api/products
