@@ -10,7 +10,6 @@ app.use( cors() )
 /** Definimos las rutas disponibles */
 
 app.use( '/api/products', require( './routes/product.routes' ) );       // -> http://localhost:4000/api/products
-app.use( '/api/categories', require( './routes/categories.routes' ) );  // -> http://localhost:4000/api/categories
 app.use( '/api/localidades', require( './routes/localidades.routes' ) ); 
 app.use( '/api/eventos', require( './routes/evento.routes' ) );  // -> http://localhost:4000/api/eventos
 
