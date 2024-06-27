@@ -1,6 +1,7 @@
-const { obtenerTodaslaslocalidades, obtenerunalocalidadporid, crearunalocalidad, eliminarunalocalidad } = require("../services/localidades.service");
+const { obtenerTodaslaslocalidades, obtenerunalocalidadporid, crearunalocalidad, eliminarunalocalidad, actualizarUnalocalidadCompleta } = require("../services/localidades.service");
 
 const obtenerlocalidades = async ( req, res ) => {
+
 
     try {
         const data = await obtenerTodaslaslocalidades();    
@@ -44,7 +45,8 @@ const obtenerlocalidadporid = async ( req, res ) => {
 
 const crearlocalidad = async ( req, res ) => {
     const newCategory = req.body;
-    
+
+
     try {
         const data = await crearunalocalidad( newCategory );
 
@@ -84,9 +86,34 @@ const eliminarlocalidad = async ( req, res ) => {
     
 }
 
+
+const actualizarlocalidad = async (req, res) => {
+    const id = req.params.id;
+    const updateData = req.body;
+
+    try {
+        const data = await actualizarUnalocalidadCompleta( id, updateData);
+
+        res.json({
+            ok: true,
+            data
+        })
+        
+    } catch (error) {
+
+        console.error( error );
+        res.json({
+            ok: false,
+            msg: 'No se pudo actualizar la localidad por ID'
+        })
+        
+    }
+}
+
 module.exports = {
     obtenerlocalidades,
     obtenerlocalidadporid,
     crearlocalidad,
     eliminarlocalidad,
+    actualizarlocalidad
 };

@@ -17,11 +17,21 @@ const eliminarunalocalidad = async ( id ) => {
     return await LocalidadesModel.findOneAndDelete({ _id: id });
 }
 
+async function actualizarUnalocalidadCompleta(_id, dataActualizada ) {
+    return await LocalidadesModel.findOneAndUpdate(
+        { _id},
+        dataActualizada,
+        {new: true}
+
+    );
+}
+
 
 module.exports = {
     obtenerTodaslaslocalidades,
     obtenerunalocalidadporid,
     crearunalocalidad,
-    eliminarunalocalidad
+    eliminarunalocalidad,
+    actualizarUnalocalidadCompleta
     
 };

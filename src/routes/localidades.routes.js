@@ -1,5 +1,5 @@
 const { Router } = require( 'express' );
-const { obtenerlocalidades, obtenerlocalidadporid, crearlocalidad, eliminarlocalidad } = require('../controllers/localidades.controller');
+const { obtenerlocalidades, obtenerlocalidadporid, crearlocalidad, eliminarlocalidad, actualizarlocalidad } = require('../controllers/localidades.controller');
 
 const router = Router();
 
@@ -8,6 +8,7 @@ const router = Router();
 router.get( '/', obtenerlocalidades );
 router.get( '/:id', obtenerlocalidadporid );
 router.post( '/',  crearlocalidad);
+router.patch( '/:id',  actualizarlocalidad);
 router.delete( '/:id',eliminarlocalidad  );
 
 
