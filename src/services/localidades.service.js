@@ -1,4 +1,4 @@
-const LocalidadesModel = require("../models/localidades");
+const LocalidadesModel = require("../models/Localidades");
 
 
 const obtenerTodaslaslocalidades = async () => {

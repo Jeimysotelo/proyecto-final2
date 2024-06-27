@@ -68,6 +68,7 @@ const createEvento = async ( req, res ) => {
 
 const updateEventoById = async ( req, res ) => {
     const id = req.params.id;
+    const updatedData = req.body;
 
     try {
 
