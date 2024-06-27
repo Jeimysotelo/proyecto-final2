@@ -1,12 +1,10 @@
 
-const { obtenerTodaslaslocalidades, obtenerunalocalidadporid, crearunalocalidad, eliminarunalocalidad, actualizarUnalocalidadCompleta } = require("../services/localidades.service");
+const { insertarEvento, obtenerEventos, obtenerUnEventoPorId, eliminarUnEventoPorId, actualizarUnEventoCompleto } = require("../services/evento.service");
 
-const obtenerlocalidades = async ( req, res ) => {
-
+const getEventos = async ( req, res ) => {
 
     try {
-        const data = await obtenerTodaslaslocalidades();    
-
+        const data = await obtenerEventos();  
 
         res.json({
             ok: true,
@@ -17,20 +15,19 @@ const obtenerlocalidades = async ( req, res ) => {
         console.error( error );
         res.json({
             ok: false,
-            msg: 'Error no puede obtener todas las las localidades'
-
+            msg: 'Error no puede obtener todos los eventos'
         })
     }
 
 
 }
 
-const obtenerlocalidadporid = async ( req, res ) => {
+
+const getEventoById = async ( req, res ) => {
     const id = req.params.id;
 
     try {
-        const data = await obtenerunalocalidadporid( id );
-
+        const data = await obtenerUnEventoPorId( id );
 
         res.json({
             ok: true,
@@ -41,22 +38,17 @@ const obtenerlocalidadporid = async ( req, res ) => {
         console.error( error );
         res.json({
             ok: false,
-
-            msg: 'Error al obtener una localidad por ID'
-
+            msg: 'Error al obtener un evento por ID'
         });
     }
 
 }
 
-
-const crearlocalidad = async ( req, res ) => {
-    const newCategory = req.body;
-
-
+const createEvento = async ( req, res ) => {
+    const newEvento = req.body;
+    
     try {
-        const data = await crearunalocalidad( newCategory );
-
+        const data = await insertarEvento( newEvento );
 
         res.json({
             ok: true,
@@ -74,15 +66,13 @@ const crearlocalidad = async ( req, res ) => {
 }
 
 
-const eliminarlocalidad = async ( req, res ) => {
-
+const updateEventoById = async ( req, res ) => {
     const id = req.params.id;
 
     try {
 
-        const data = await eliminarunalocalidad( id );
-
-
+        const data = await actualizarUnEventoCompleto( id, updatedData );
+        
         res.json({
             ok: true,
             data
@@ -92,23 +82,22 @@ const eliminarlocalidad = async ( req, res ) => {
         res.json({
             ok: false,
 
-            msg: 'Error al eliminar categoria por ID'
-        });
+            msg: 'No pudo actualizar el evento por ID'
+        })
 
     }
     
 }
 
 
-const actualizarlocalidad = async (req, res) => {
+const removeEventoById = async ( req, res ) => {
 
     const id = req.params.id;
     const updateData = req.body;
 
     try {
 
-        const data = await actualizarUnalocalidadCompleta( id, updateData);
-
+        const data = await eliminarUnEventoPorId( id );
 
         res.json({
             ok: true,
@@ -120,20 +109,17 @@ const actualizarlocalidad = async (req, res) => {
         console.error( error );
         res.json({
             ok: false,
-
-            msg: 'No se pudo actualizar la localidad por ID'
-        })
-        
-
+            msg: 'Error al eliminar el evento por ID'
+        });
     }
 }
 
 module.exports = {
-    
-    obtenerlocalidades,
-    obtenerlocalidadporid,
-    crearlocalidad,
-    eliminarlocalidad,
-    actualizarlocalidad
+
+    getEventos,
+    getEventoById,
+    createEvento,
+    updateEventoById,
+    removeEventoById
 
 };
