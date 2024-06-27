@@ -20,6 +20,9 @@ const EventoSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    imageUrl: {
+        type: String 
+    }
 })
 
 const EventoModel = model( 'Evento', EventoSchema );
