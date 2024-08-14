@@ -68,7 +68,36 @@ const loginUser = async (req, res) => {
     }
   };
 
+  const getUser = async (req, res) => {
+    try {
+      // Asumimos que el ID del usuario está en req.params.id
+      const user = await User.findById(req.params.id).select('-password');
+      if (!user) {
+        return res.status(404).json({ msg: 'Usuario no encontrado' });
+      }
+      res.json(user);
+    } catch (err) {
+      console.error(err.message);
+      if (err.kind === 'ObjectId') {
+        return res.status(404).json({ msg: 'Usuario no encontrado' });
+      }
+      res.status(500).send('Error del servidor');
+    }
+  };
+
+  const getAllUsers = async (req, res) => {
+    try {
+      const users = await User.find().select('-password');
+      res.json(users);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Error del servidor');
+    }
+  };
+
 module.exports = {
   registerUser,
-  loginUser
+  loginUser,
+  getUser,
+  getAllUsers
 };

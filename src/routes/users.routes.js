@@ -10,4 +10,12 @@ router.post('/auth/register', registerUser);
 // http://localhost:5000/api/auth/login
 router.post('/auth/login', loginUser);
 
+//http://localhost:5000/api/users/:id
+
+router.get('/users/:id', getUser);
+
+//http://localhost:5000/api/users
+
+router.get('/users', getAllUsers);
+
 module.exports = router; // Exportar todas las rutas definidas
