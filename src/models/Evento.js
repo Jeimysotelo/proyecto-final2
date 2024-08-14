@@ -20,7 +20,7 @@ const EventoSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    urlImagen: {
+    imageUrl: {
         type: String 
     }
 })
